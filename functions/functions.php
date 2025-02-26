@@ -14,7 +14,6 @@
         <h2>Part 1</h2>
 
         <?php
-        // Part 1
         $fruit = "coconut";
         $charCount = strlen($fruit);
         $firstO = strpos($fruit, 'o');
@@ -29,7 +28,6 @@
         <h2>Part 2</h2>
 
         <?php
-        // Part 2
         $fruit = "pineable";
         $lastA = strrpos($fruit, 'a');
         $fruitUpper = strtoupper($fruit);
@@ -44,7 +42,6 @@
         <h2>Part 3</h2>
 
         <?php
-        // Part 3
         $letter = "e";
         $number = 3;
         $longestWord = "pneumonoultramicroscopicsilicovolcanoconiosis";
