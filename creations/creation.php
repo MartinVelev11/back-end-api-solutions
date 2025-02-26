@@ -9,61 +9,66 @@
     </head>
     <body>
 
-        <h1>Arrays: creation</h1>
+        <h1>Arrays: functions</h1>
 
-        <div id="output"></div> <!-- Container for output -->
+        <h2>Part 1</h2>
+        <div id="part1-output">
+            <?php
+                // Part 1
+                // Create an array with more than 5 animals
+                $animals = ["Dog", "Cat", "Elephant", "Lion", "Tiger", "Bear", "Wolf"];
 
-        <h1 class="extra">Exercise arrays: part 2</h1>
+                // Calculate how many elements are in the array
+                $animalCount = count($animals);
+                echo "<p>Animals Array: " . implode(", ", $animals) . "</p>";
+                echo "<p>Number of animals: $animalCount</p>";
 
-        <div id="output-part2"></div> <!-- Container for part 2 output -->
+                // Search for an animal in the array
+                $teZoekenDier = "Lion"; // Variable to search for
+                if (in_array($teZoekenDier, $animals)) {
+                    echo "<p>Found: $teZoekenDier</p>";
+                } else {
+                    echo "<p>Not found: $teZoekenDier</p>";
+                }
+            ?>
+        </div>
 
-        <script>
-            // Function to append results to the webpage
-            function printToPage(containerId, message) {
-                const container = document.getElementById(containerId);
-                const p = document.createElement("p");
-                p.textContent = message;
-                container.appendChild(p);
-            }
+        <h2 class="extra">Part 2</h2>
+        <div id="part2-output">
+            <?php
+                // Part 2
+                // Make a copy of the original array
+                $animalsCopy = $animals;
 
-            // Create an array in which you store 10 animals (do this in 2 different ways)
-            // Method 1: Using array literal
-            let animals1 = ["Dog", "Cat", "Elephant", "Lion", "Tiger", "Bear", "Wolf", "Fox", "Rabbit", "Deer"];
-            printToPage("output", `Animals Array 1: ${animals1.join(", ")}`);
+                // Sort the array alphabetically (A -> Z)
+                sort($animalsCopy);
+                echo "<p>Sorted Animals: " . implode(", ", $animalsCopy) . "</p>";
 
-            // Method 2: Using the Array constructor
-            let animals2 = new Array("Dog", "Cat", "Elephant", "Lion", "Tiger", "Bear", "Wolf", "Fox", "Rabbit", "Deer");
-            printToPage("output", `Animals Array 2: ${animals2.join(", ")}`);
+                // Create a mammals array and merge it with the animals array
+                $mammals = ["Whale", "Dolphin", "Bat"];
+                $mergedAnimals = array_merge($animalsCopy, $mammals);
+                echo "<p>Merged Animals: " . implode(", ", $mergedAnimals) . "</p>";
+            ?>
+        </div>
 
-            // Create a new array containing 5 vehicles, making sure you can determine which category of vehicle it is (2-dimensional array)
-            let vehicles = {
-                landVehicles: ["Vespa", "bicycle"],
-                waterVehicles: ["surfboard", "raft", "schooner", "three-master"],
-                airVehicles: ["hot air balloon", "helicopter", "B52"]
-            };
-            printToPage("output", `Vehicles Array: ${JSON.stringify(vehicles, null, 2)}`);
+        <h3 class="extra">Part 3</h3>
+        <div id="part3-output">
+            <?php
+                // Part 3
+                // Create an array with the following values
+                $numbers = [8, 7, 8, 7, 3, 2, 1, 2, 4];
 
-            // Exercise arrays: part 2
-            // Create an array in which you place the numbers 1, 2, 3, 4, 5
-            let numbers1 = [1, 2, 3, 4, 5];
-            printToPage("output-part2", `Numbers Array 1: ${numbers1.join(", ")}`);
+                // Remove duplicates from the array
+                $uniqueNumbers = array_unique($numbers);
 
-            // Multiply all the numbers together and print to the screen
-            let product = numbers1.reduce((acc, curr) => acc * curr, 1);
-            printToPage("output-part2", `Product of numbers: ${product}`);
+                // Sort the array from largest to smallest
+                rsort($uniqueNumbers);
 
-            // Print the odd numbers (by using an operator, do not do this manually)
-            let oddNumbers = numbers1.filter(num => num % 2 !== 0);
-            printToPage("output-part2", `Odd numbers: ${oddNumbers.join(", ")}`);
-
-            // Create a second array in which you place the numbers 5, 4, 3, 2, 1
-            let numbers2 = [5, 4, 3, 2, 1];
-            printToPage("output-part2", `Numbers Array 2: ${numbers2.join(", ")}`);
-
-            // Add the numbers from both arrays with the same index together
-            let sumArray = numbers1.map((num, index) => num + numbers2[index]);
-            printToPage("output-part2", `Sum of arrays: ${sumArray.join(", ")}`);
-        </script>
+                // Print the results
+                echo "<p>Original Array: " . implode(", ", $numbers) . "</p>";
+                echo "<p>Array without Duplicates: " . implode(", ", $uniqueNumbers) . "</p>";
+            ?>
+        </div>
 
     </body>
 </html>
