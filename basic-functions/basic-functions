@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1>Functions: Basic</h1>
+
+    <h2>Part 1</h2>
+    <?php
+    function calculateSum($number1, $number2) {
+        return $number1 + $number2;
+    }
+
+    function multiply($number1, $number2) {
+        return $number1 * $number2;
+    }
+
+    function isEven($number) {
+        return $number % 2 === 0;
+    }
+
+    //return the length and uppercase 
+    function stringInfo($str) {
+        return [
+            'length' => strlen($str),
+            'uppercase' => strtoupper($str)
+        ];
+    }
+
+    //display results
+    $sum = calculateSum(5, 10);
+    $product = multiply(5, 10);
+    $evenCheck = isEven(5);
+    $stringData = stringInfo("Hello, World!");
+
+    echo "<p>sum of 5 and 10: $sum</p>";
+    echo "<p>porduct of 5 and 10: $product</p>";
+    echo "<p>is 5 even? " . ($evenCheck ? 'Yes' : 'No') . "</p>";
+    echo "<p>String Info: length = {$stringData['length']}, uppercase = {$stringData['uppercase']}</p>";
+    ?>
+
+    <h1 class="extra">Part 2</h1>
+    <?php
+    function printArray($array, $name = 'array') {
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                printArray($value, "$name[$key]");
+            } else {
+                echo "<p>$name[$key] has value '$value'</p>";
+            }
+        }
+    }
+
+    // htmL tag
+    function validateHtmlTag($html) {
+        return preg_match('/<html[^>]*>.*<\/html>/is', $html);
+    }
+
+    $heroes = [
+        'Roger Penrose',
+        'Albert Einstein',
+        'Isaac Newton'
+    ];
+
+    $nestedArray = [
+        'heroes' => [
+            'Roger Penrose',
+            'Albert Einstein',
+            'Isaac Newton'
+        ],
+        'scientists' => [
+            'Marie Curie',
+            'Nikola Tesla'
+        ]
+    ];
+
+    $htmlString = "<html><body>Hello, world!</body></html>";
+
+    echo "<h1>Exercise functions</h1>";
+    printArray($heroes, 'heroes');
+    echo "<h2> Array</h2>";
+    printArray($nestedArray);
+
+    echo "<p>Is HTML tag valid? " . (validateHtmlTag($htmlString) ? 'Yes' : 'No') . "</p>";
+    ?>
+</body>
+</html>
